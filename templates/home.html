@@ -13,7 +13,9 @@ Hi {{ user.username }}! You are {{ user.age }} years old.
 </form>
 {% else %}
 <p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a> |
-<a href="{% url 'signup' %}">Sign Up</a>
+<a href="{% url 'login' %}"><button type="submit" class="btn btn-success">Log In</button></a>
+<a href="{% url 'signup' %}"><button type="submit" class="btn btn-primary">Sign Up</button></a>
+<!-- <a href="{% url 'login' %}">Log In</a> | -->
+<!-- <a href="{% url 'signup' %}">Sign Up</a> -->
 {% endif %}
 {% endblock content %}
