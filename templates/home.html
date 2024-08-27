@@ -3,19 +3,20 @@
 {% block title %}Home{% endblock title %}
 
 {% block content %}
-{% if user.is_authenticated %}
-<!-- new code here! -->
-Hi {{ user.username }}! You are {{ user.age }} years old.
-<!-- end of new code -->
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Log Out</button>
-</form>
-{% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}"><button type="submit" class="btn btn-success">Log In</button></a>
-<a href="{% url 'signup' %}"><button type="submit" class="btn btn-primary">Sign Up</button></a>
-<!-- <a href="{% url 'login' %}">Log In</a> | -->
-<!-- <a href="{% url 'signup' %}">Sign Up</a> -->
-{% endif %}
+<div class="container mt-4">
+    {% if user.is_authenticated %}
+    <!-- Display user information -->
+    <p class="mb-4" style="color: #333;">Hi {{ user.username }}! You are {{ user.age }} years old.</p>
+    <!-- Log Out Button -->
+    <form action="{% url 'logout' %}" method="post" class="d-inline">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-outline-danger btn-sm">Log Out</button>
+    </form>
+    {% else %}
+    <!-- Message and Action Buttons for Non-Authenticated Users -->
+    <p class="mb-3" style="color: #555;">You are not logged in.</p>
+    <a href="{% url 'login' %}" class="btn btn-outline-success btn-sm me-2">Log In</a>
+    <a href="{% url 'signup' %}" class="btn btn-primary btn-sm">Sign Up</a>
+    {% endif %}
+</div>
 {% endblock content %}

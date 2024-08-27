@@ -26,6 +26,7 @@ SECRET_KEY = "django-insecure-wn@t7vss2!91jc+*l@kf=-7o9m=_4i*%m1t_1!29=vvy4a**va
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# ALLOWED_HOSTS = ["192.168.1.52"]
 ALLOWED_HOSTS = []
 
 
@@ -138,4 +139,4 @@ LOGOUT_REDIRECT_URL = "home"
 
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
-CRISPY_TEMPLATE_PACK = "bootstrap5"  #
+CRISPY_TEMPLATE_PACK = "bootstrap5"
