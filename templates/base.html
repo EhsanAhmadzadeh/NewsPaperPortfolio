@@ -38,6 +38,9 @@
                     </li>
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+                        <a href="{% url 'user_articles' %}" class="nav-link">My Articles</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{% url 'article_list' %}" class="nav-link">All Articles</a>
                     </li>
                     <li class="nav-item">

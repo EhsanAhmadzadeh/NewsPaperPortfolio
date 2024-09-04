@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.conf import settings
 from django.views import View
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.detail import SingleObjectMixin
@@ -6,6 +7,7 @@ from django.views.generic.edit import UpdateView, DeleteView, CreateView
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
+
 
 from .forms import CommentForm
 from .models import Article
@@ -18,6 +20,17 @@ class ArticleListView(LoginRequiredMixin, ListView):
 
     queryset = Article.objects.order_by("-date")
     template_name = "article_list.html"
+    context_object_name = "article_list"
+
+
+class UserArticleList(LoginRequiredMixin, ListView):
+    model = Article
+    template_name = "article_list.html"
+    context_object_name = "article_list"
+
+    def get_queryset(self):
+
+        return Article.objects.filter(author=self.request.user).order_by("-date")
 
 
 class CommentGet(DetailView):

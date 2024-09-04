@@ -5,15 +5,13 @@
 {% block content %}
 <div class="container mt-4">
     {% if user.is_authenticated %}
-    <!-- Display user information -->
-    <p class="mb-4" style="color: #333;">Hi {{ user.username }}! You are {{ user.age }} years old.</p>
-    <!-- Log Out Button -->
+    <p class="mb-4" style="color: #333;">Welcome {{ user.username }}!<br> You are {{ user.age }} years old.</p>
+
     <form action="{% url 'logout' %}" method="post" class="d-inline">
         {% csrf_token %}
         <button type="submit" class="btn btn-outline-danger btn-sm">Log Out</button>
     </form>
     {% else %}
-    <!-- Message and Action Buttons for Non-Authenticated Users -->
     <p class="mb-3" style="color: #555;">You are not logged in.</p>
     <a href="{% url 'login' %}" class="btn btn-outline-success btn-sm me-2">Log In</a>
     <a href="{% url 'signup' %}" class="btn btn-primary btn-sm">Sign Up</a>
