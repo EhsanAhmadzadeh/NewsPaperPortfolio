@@ -3,6 +3,8 @@ from django.views import View
 from django.views.generic import ListView, DetailView, FormView
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import UpdateView, DeleteView, CreateView
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy, reverse
 
 from .forms import CommentForm
@@ -58,6 +60,17 @@ class ArticleDetailView(LoginRequiredMixin, View):
         view = CommentPost.as_view()
         return view(request, *args, **kwargs)
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+
+        likes_connected = get_object_or_404(Article, id=self.kwargs["pk"])
+        liked = False
+        if likes_connected.likes.filter(id=self.request.user.id).exists():
+            liked = True
+        data["number_of_likes"] = likes_connected.number_of_likes()
+        data["article_is_liked"] = liked
+        return data
+
 
 class ArticleUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Article
@@ -93,3 +106,13 @@ class ArticleCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+
+def article_like(request, pk):
+    article = get_object_or_404(Article, id=request.POST.get("article_id"))
+    if article.likes.filter(id=request.user.id).exists():
+        article.likes.remove(request.user)
+    else:
+        article.likes.add(request.user)
+
+    return HttpResponseRedirect(reverse("article_detail", args=[str(pk)]))

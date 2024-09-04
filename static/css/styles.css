@@ -1,0 +1,110 @@
+/* General body styling */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* General button size and appearance */
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 20px;
+    /* Slightly rounded for modern look */
+}
+
+/* Styling for the like button */
+.btn-outline-danger {
+    border-color: #ff6b6b;
+    color: #ff6b6b;
+    /* Default color for unliked state */
+}
+
+.btn-outline-danger:hover,
+.btn-outline-danger:focus {
+    background-color: #ff6b6b;
+    /* Button background turns red on hover/focus */
+    color: #ffffff;
+    /* Text color becomes white */
+}
+
+/* Ensure Heart Icon CSS Applies Universally */
+.far.fa-heart,
+.fas.fa-heart,
+.btn-outline-secondary .fa-heart,
+.btn-outline-danger .fa-heart {
+    color: #ff6b6b;
+    /* Default heart color */
+}
+
+.btn-outline-danger:hover .fa-heart,
+.btn-outline-secondary:hover .fa-heart {
+    color: #ffffff;
+    /* Icon color changes to white on hover/focus */
+}
+
+/* Text styling */
+.text-secondary {
+    color: #6c757d !important;
+}
+
+.text-muted {
+    color: #888;
+}
+
+/* Main content padding */
+main {
+    padding-top: 20px;
+}
+
+/* Styles specific to articles */
+.card {
+    border: 1px solid #eaeaea;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header,
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.card-header a {
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+}
+
+.card-header a:hover {
+    color: #007BFF;
+}
+
+/* Link button styling */
+.btn-link {
+    color: #007BFF;
+    text-decoration: none;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Comment styling */
+.comment {
+    border-top: 1px solid #eaeaea;
+    padding-top: 10px;
+    margin-top: 10px;
+}
