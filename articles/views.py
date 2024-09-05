@@ -19,12 +19,14 @@ from .models import Article
 class ArticleListView(LoginRequiredMixin, ListView):
 
     queryset = Article.objects.order_by("-date")
+    paginate_by = 10
     template_name = "article_list.html"
     context_object_name = "article_list"
 
 
 class UserArticleList(LoginRequiredMixin, ListView):
     model = Article
+    paginate_by = 10
     template_name = "article_list.html"
     context_object_name = "article_list"
 

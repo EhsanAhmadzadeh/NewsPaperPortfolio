@@ -108,3 +108,22 @@ main {
     padding-top: 10px;
     margin-top: 10px;
 }
+
+
+/* Pagination styling */
+.pagination {
+    margin-top: 20px;
+}
+
+.pagination .page-item .page-link {
+    border-radius: 20px;
+    color: #007BFF;
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #f8f9fa;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+}
